@@ -1,13 +1,12 @@
 data class Post(
-    val id: Int,
-    val ownerId: Int,
-    val fromId: Int,
-    val text: String,
-    val friendsOnly: Boolean = false,
-    val likes: Likes,
-    val views: Views,
-    val postType: String,
-    val markedAsAds: Boolean = false,
-    val isFavorite: Boolean = false
-) {
-}
+    var id: Int,
+    var ownerId: Int,
+    var fromId: Int,
+    var text: String,
+    var friendsOnly: Boolean = false,
+    var likes: Likes,
+    var views: Views,
+    var postType: String,
+    var markedAsAds: Boolean = false,
+    var isFavorite: Boolean = false
+)
