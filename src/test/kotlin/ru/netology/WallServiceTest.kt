@@ -39,7 +39,58 @@ class WallServiceTest {
     }
 
     @Test
-    fun update() {
+    fun updatePositive() {
+        val post1 = Post(
+            2,
+            2,
+            3,
+            "Hello",
+            likes = Likes(0, canLike = true, canPublish = true, userLikes = true),
+            views = Views(0),
+            postType = "audio"
+        )
+
+        val post2 = Post(
+            2,
+            2,
+            3,
+            "Hi",
+            likes = Likes(0, canLike = true, canPublish = true, userLikes = true),
+            views = Views(0),
+            postType = "audio"
+        )
+        val expected = true
+        WallService.add(post1)
+
+        assertEquals(expected, WallService.update(post2))
+
+    }
+
+    @Test
+    fun updateNegative() {
+        val post1 = Post(
+            2,
+            2,
+            3,
+            "Hello",
+            likes = Likes(0, canLike = true, canPublish = true, userLikes = true),
+            views = Views(0),
+            postType = "audio"
+        )
+
+        val post2 = Post(
+            3,
+            2,
+            3,
+            "Hi",
+            likes = Likes(0, canLike = true, canPublish = true, userLikes = true),
+            views = Views(0),
+            postType = "audio"
+        )
+        val expected = false
+        WallService.add(post1)
+
+        assertEquals(expected, WallService.update(post2))
 
     }
 }

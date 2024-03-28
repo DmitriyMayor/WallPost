@@ -6,7 +6,7 @@ fun main() {
 
 
 
-    var post1 = Post(
+    val post1 = Post(
         1,
         2,
         3,
@@ -16,7 +16,7 @@ fun main() {
         postType = "audio"
     )
 
-    var post2 = Post(
+    val post2 = Post(
         1,
         2,
         3,
@@ -26,12 +26,10 @@ fun main() {
         postType = "audio"
     )
 
-    println(posts.size)
-    println(add(post1))
-    //println(posts)
+add(post1)
+    println(posts)
     println( update(post2))
     println(posts)
-    println(posts.size)
 
 
 
