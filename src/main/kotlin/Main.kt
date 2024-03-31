@@ -5,7 +5,6 @@ import WallService.update
 fun main() {
 
 
-
     val post1 = Post(
         1,
         2,
@@ -13,7 +12,8 @@ fun main() {
         "Hello",
         likes = Likes(0, canLike = true, canPublish = true, userLikes = true),
         views = Views(0),
-        postType = "audio"
+        postType = "audio",
+        original = null
     )
 
     val post2 = Post(
@@ -23,14 +23,14 @@ fun main() {
         "Hi",
         likes = Likes(0, canLike = true, canPublish = true, userLikes = true),
         views = Views(0),
-        postType = "audio"
+        postType = "audio",
+        original = null
     )
 
-add(post1)
+    add(post1)
     println(posts)
-    println( update(post2))
+    println(update(post2))
     println(posts)
-
 
 
 }
