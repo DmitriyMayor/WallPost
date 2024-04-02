@@ -8,5 +8,6 @@ data class Post(
     var views: Views,
     var postType: String,
     var markedAsAds: Boolean = false,
-    var isFavorite: Boolean = false
+    var isFavorite: Boolean = false,
+    val attachments: Array<Attachment> = emptyArray(),
 )
