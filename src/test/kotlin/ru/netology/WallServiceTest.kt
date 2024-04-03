@@ -19,7 +19,9 @@ class WallServiceTest {
             "Hello",
             likes = Likes(0, canLike = true, canPublish = true, userLikes = true),
             views = Views(0),
-            postType = "audio"
+            postType = "audio",
+            original = null
+
         )
 
         val post2 = Post(
@@ -29,7 +31,8 @@ class WallServiceTest {
             "Hello",
             likes = Likes(0, canLike = true, canPublish = true, userLikes = true),
             views = Views(0),
-            postType = "audio"
+            postType = "audio",
+            original = null
         )
         val expected = post2
 
@@ -47,7 +50,8 @@ class WallServiceTest {
             "Hello",
             likes = Likes(0, canLike = true, canPublish = true, userLikes = true),
             views = Views(0),
-            postType = "audio"
+            postType = "audio",
+            original = null
         )
 
         val post2 = Post(
@@ -57,7 +61,8 @@ class WallServiceTest {
             "Hi",
             likes = Likes(0, canLike = true, canPublish = true, userLikes = true),
             views = Views(0),
-            postType = "audio"
+            postType = "audio",
+            original = null
         )
         val expected = true
         WallService.add(post1)
@@ -75,7 +80,8 @@ class WallServiceTest {
             "Hello",
             likes = Likes(0, canLike = true, canPublish = true, userLikes = true),
             views = Views(0),
-            postType = "audio"
+            postType = "audio",
+            original = null
         )
 
         val post2 = Post(
@@ -85,7 +91,8 @@ class WallServiceTest {
             "Hi",
             likes = Likes(0, canLike = true, canPublish = true, userLikes = true),
             views = Views(0),
-            postType = "audio"
+            postType = "audio",
+            original = null
         )
         val expected = false
         WallService.add(post1)
