@@ -6,6 +6,7 @@ import Post
 import PostNotFoundException
 import Views
 import WallService
+import WallService.add
 import WallService.createComment
 import WallService.posts
 import org.junit.Test
@@ -130,7 +131,7 @@ class WallServiceTest {
     @Test(expected = PostNotFoundException::class)
     fun addCommentException(){
         val post1 = Post(
-            2,
+            3,
             2,
             3,
             "Hello",
@@ -139,10 +140,10 @@ class WallServiceTest {
             postType = "audio",
             original = null
         )
-        WallService.add(post1)
+        add(post1)
         val comment = Comment("комментарий")
 
-        createComment(3, comment)
+        createComment(4, comment)
 
 
 
