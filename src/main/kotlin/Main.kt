@@ -1,12 +1,13 @@
-import WallService.add
 import WallService.posts
-import WallService.update
+
 
 fun main() {
 
+    val service = WallService
 
-    val post1 = Post(
-        1,
+
+    var post1 = Post(
+        3,
         2,
         3,
         "Hello",
@@ -16,8 +17,8 @@ fun main() {
         original = null
     )
 
-    val post2 = Post(
-        1,
+    var post2 = Post(
+        3,
         2,
         3,
         "Hi",
@@ -27,10 +28,20 @@ fun main() {
         original = null
     )
 
-    add(post1)
-    println(posts)
-    println(update(post2))
-    println(posts)
+    service.add(post1)
+    println(service.posts)
+    service.update(post2)
+    //service.createComment(3, comment = Comment("комментарий"))
+    println(service.posts)
+
+
+
+    //var noteService = NoteService
+    //var note = Note(1,"первая", "заметка")
+    //noteService.addNote(note)
+    //println(noteService.notes)
+
+
 
 
 }

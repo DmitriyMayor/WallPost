@@ -1,9 +1,13 @@
 package ru.netology
 
+import Comment
 import Likes
 import Post
+import PostNotFoundException
 import Views
 import WallService
+import WallService.createComment
+import WallService.posts
 import org.junit.Test
 
 import org.junit.Assert.*
@@ -38,7 +42,7 @@ class WallServiceTest {
 
         WallService.add(post1)
         WallService.add(post2)
-        assertEquals(expected, WallService.posts.last())
+        assertEquals(expected, posts.last())
     }
 
     @Test
@@ -98,6 +102,49 @@ class WallServiceTest {
         WallService.add(post1)
 
         assertEquals(expected, WallService.update(post2))
+
+    }
+
+    @Test
+    fun addComment(){
+        val post1 = Post(
+            2,
+            2,
+            3,
+            "Hello",
+            likes = Likes(0, canLike = true, canPublish = true, userLikes = true),
+            views = Views(0),
+            postType = "audio",
+            original = null
+        )
+        WallService.add(post1)
+        val comment = Comment("комментарий")
+        val expected = Comment("комментарий")
+        val actual = createComment(2, comment)
+
+        assertEquals(expected, actual)
+
+
+    }
+
+    @Test(expected = PostNotFoundException::class)
+    fun addCommentException(){
+        val post1 = Post(
+            2,
+            2,
+            3,
+            "Hello",
+            likes = Likes(0, canLike = true, canPublish = true, userLikes = true),
+            views = Views(0),
+            postType = "audio",
+            original = null
+        )
+        WallService.add(post1)
+        val comment = Comment("комментарий")
+
+        createComment(3, comment)
+
+
 
     }
 }

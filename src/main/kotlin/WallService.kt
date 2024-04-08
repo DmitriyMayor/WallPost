@@ -8,15 +8,9 @@ object WallService {
     }
 
     fun update(post: Post): Boolean {
-        /*for ((index, p) in posts.withIndex()) {
+
+        for (p in posts) {
             if (p.id == post.id) {
-                posts[index] = post.copy()
-            }
-            return true
-        }
-        return false*/
-        for (p in posts){
-            if (p.id == post.id){
                 posts.filter { p.id == post.id }
                 posts += post.copy()
                 return true
@@ -26,6 +20,16 @@ object WallService {
 
     }
 
+    fun createComment(postId: Int, comment: Comment): Comment {
+        for (post in posts) {
+            if (post.id == postId) {
+                post.comments += comment
+            } else throw PostNotFoundException()
+
+        }
+
+        return comment
+    }
 
 }
 

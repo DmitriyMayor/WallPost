@@ -9,7 +9,8 @@ data class Post(
     var postType: String,
     var markedAsAds: Boolean = false,
     var isFavorite: Boolean = false,
-    val attachments: Array<Attachment> = emptyArray(),
-    var original: Post?
+    var attachments: Array<Attachment> = emptyArray(),
+    var comments:Array<Comment> = emptyArray(),
+    var original: Post?,
 
 )
