@@ -48,6 +48,8 @@ class WallServiceTest {
         service.add(post1)
 
         assertEquals(expected, service.add(post2))
+
+        WallService.clearPosts()
     }
 
     @Test
@@ -77,6 +79,8 @@ class WallServiceTest {
         WallService.add(post1)
 
         assertEquals(expected, WallService.update(post2))
+
+        WallService.clearPosts()
 
     }
 
@@ -110,6 +114,8 @@ class WallServiceTest {
 
         assertEquals(expected, WallService.update(post2))
 
+        WallService.clearPosts()
+
     }
 
 
@@ -129,6 +135,8 @@ class WallServiceTest {
         val comment = Comment(1, "тест")
 
         createComment(4, comment)
+
+        WallService.clearPosts()
 
 
     }
@@ -151,6 +159,8 @@ class WallServiceTest {
         add(post1)
         val comment = Comment(1, "тест")
         assertEquals(comment, createComment(4, comment))
+
+        WallService.clearPosts()
 
     }
 }
