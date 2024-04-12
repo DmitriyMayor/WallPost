@@ -13,12 +13,13 @@ import org.junit.Test
 
 import org.junit.Assert.*
 
+
 class WallServiceTest {
 
     @Test
     fun testAddPost() {
         val post1 = Post(
-            2,
+            1,
             2,
             3,
             "Hello",
@@ -30,7 +31,7 @@ class WallServiceTest {
         )
 
         val post2 = Post(
-            1,
+            2,
             2,
             3,
             "Hello",
@@ -39,11 +40,14 @@ class WallServiceTest {
             postType = "audio",
             original = null
         )
+
+        var service = WallService
+
         val expected = post2
 
-        WallService.add(post1)
-        WallService.add(post2)
-        assertEquals(expected, posts.last())
+        service.add(post1)
+
+        assertEquals(expected, service.add(post2))
     }
 
     @Test
@@ -79,7 +83,7 @@ class WallServiceTest {
     @Test
     fun updateNegative() {
         val post1 = Post(
-            2,
+            1,
             2,
             3,
             "Hello",
@@ -99,37 +103,18 @@ class WallServiceTest {
             postType = "audio",
             original = null
         )
+        var service = WallService
+
         val expected = false
-        WallService.add(post1)
+        service.add(post1)
 
         assertEquals(expected, WallService.update(post2))
 
     }
 
-    @Test
-    fun addComment(){
-        val post1 = Post(
-            2,
-            2,
-            3,
-            "Hello",
-            likes = Likes(0, canLike = true, canPublish = true, userLikes = true),
-            views = Views(0),
-            postType = "audio",
-            original = null
-        )
-        WallService.add(post1)
-        val comment = Comment("комментарий")
-        val expected = Comment("комментарий")
-        val actual = createComment(2, comment)
-
-        assertEquals(expected, actual)
-
-
-    }
 
     @Test(expected = PostNotFoundException::class)
-    fun addCommentException(){
+    fun addCommentException() {
         val post1 = Post(
             3,
             2,
@@ -141,11 +126,31 @@ class WallServiceTest {
             original = null
         )
         add(post1)
-        val comment = Comment("комментарий")
+        val comment = Comment(1, "тест")
 
         createComment(4, comment)
 
 
+    }
+
+    @Test
+    fun createComment() {
+
+        val post1 = Post(
+            4,
+            2,
+            3,
+            "Hello",
+            likes = Likes(0, canLike = true, canPublish = true, userLikes = true),
+            views = Views(0),
+            postType = "audio",
+            original = null
+
+        )
+        posts = emptyArray()
+        add(post1)
+        val comment = Comment(1, "тест")
+        assertEquals(comment, createComment(4, comment))
 
     }
 }

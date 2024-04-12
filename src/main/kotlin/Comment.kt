@@ -1,1 +1,5 @@
-data class Comment(val text: String)
+data class Comment(
+    val id: Int,
+    var text: String,
+    var isDeleted: Boolean = false
+)

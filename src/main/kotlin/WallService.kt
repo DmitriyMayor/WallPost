@@ -27,8 +27,13 @@ object WallService {
             } else throw PostNotFoundException()
 
         }
-
         return comment
+    }
+
+    fun clearPosts() {
+
+TODO()
+
     }
 
 }

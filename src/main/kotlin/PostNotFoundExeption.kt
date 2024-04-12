@@ -1,6 +1,8 @@
-class PostNotFoundException: RuntimeException(){
+class PostNotFoundException: Throwable(){
 }
 
-class NoteNotFoundException: RuntimeException()
+class NoteNotFoundException: Throwable()
 
-class CommentNotFoundException: RuntimeException()
+class CommentNotFoundException: Throwable()
+
+class UserNotMyFriendException: Throwable()
