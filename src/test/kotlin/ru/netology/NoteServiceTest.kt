@@ -172,6 +172,7 @@ class NoteServiceTest {
         assertEquals(false, comment1.isDeleted)
 
         NoteService.clearNotes()
+
     }
 
 }
