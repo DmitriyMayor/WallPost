@@ -12,9 +12,15 @@ import WallService.posts
 import org.junit.Test
 
 import org.junit.Assert.*
+import org.junit.Before
 
 
 class WallServiceTest {
+
+    @Before
+    fun clearPosts() {
+        WallService.clearPosts()
+    }
 
     @Test
     fun testAddPost() {
@@ -49,7 +55,6 @@ class WallServiceTest {
 
         assertEquals(expected, service.add(post2))
 
-        WallService.clearPosts()
     }
 
     @Test
@@ -80,7 +85,6 @@ class WallServiceTest {
 
         assertEquals(expected, WallService.update(post2))
 
-        WallService.clearPosts()
 
     }
 
@@ -114,7 +118,6 @@ class WallServiceTest {
 
         assertEquals(expected, WallService.update(post2))
 
-        WallService.clearPosts()
 
     }
 
@@ -135,8 +138,6 @@ class WallServiceTest {
         val comment = Comment(1, "тест")
 
         createComment(4, comment)
-
-        WallService.clearPosts()
 
 
     }
@@ -160,7 +161,6 @@ class WallServiceTest {
         val comment = Comment(1, "тест")
         assertEquals(comment, createComment(4, comment))
 
-        WallService.clearPosts()
 
     }
 }

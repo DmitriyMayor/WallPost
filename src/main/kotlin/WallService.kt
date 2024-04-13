@@ -31,7 +31,6 @@ object WallService {
     }
 
     fun clearPosts() {
-       // posts.toMutableList()
         posts.dropLast(posts.size)
 
     }

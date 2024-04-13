@@ -4,12 +4,18 @@ import Comment
 import Note
 import NoteService
 import User
+import org.junit.Before
 
 
 import org.junit.Test
 import kotlin.test.assertEquals
 
 class NoteServiceTest {
+
+    @Before
+    fun clearNotes() {
+        NoteService.clearNotes()
+    }
 
 
     @Test
@@ -22,7 +28,7 @@ class NoteServiceTest {
 
         assertEquals(note2, NoteService.addNote(note2))
 
-        NoteService.clearNotes()
+        //NoteService.clearNotes()
     }
 
     @Test
@@ -34,7 +40,7 @@ class NoteServiceTest {
 
         assertEquals(comment, NoteService.addCommentToNote(1, comment))
 
-        NoteService.clearNotes()
+        //NoteService.clearNotes()
 
     }
 
@@ -50,7 +56,7 @@ class NoteServiceTest {
 
         assertEquals(note1, NoteService.getNotes().last())
 
-        NoteService.clearNotes()
+        //NoteService.clearNotes()
     }
 
     @Test
@@ -67,7 +73,7 @@ class NoteServiceTest {
 
         assertEquals(comment1, note1.comments.last())
 
-        NoteService.clearNotes()
+        //NoteService.clearNotes()
     }
 
     @Test
@@ -83,7 +89,7 @@ class NoteServiceTest {
 
         assertEquals(expected, actual)
 
-        NoteService.clearNotes()
+        //NoteService.clearNotes()
     }
 
     @Test
@@ -103,7 +109,7 @@ class NoteServiceTest {
 
         assertEquals(expected, actual, "Ошиблись коммнтарием")
 
-        NoteService.clearNotes()
+        //NoteService.clearNotes()
     }
 
     @Test
@@ -122,7 +128,7 @@ class NoteServiceTest {
 
         assertEquals(expected, actual)
 
-        NoteService.clearNotes()
+        //NoteService.clearNotes()
     }
 
     @Test
@@ -142,7 +148,7 @@ class NoteServiceTest {
 
         assertEquals(testComments, NoteService.getCommentsToNote(1))
 
-        NoteService.clearNotes()
+        //NoteService.clearNotes()
     }
 
     @Test
@@ -157,7 +163,10 @@ class NoteServiceTest {
 
         assertEquals(testNotes, NoteService.getFriendsNotesList(friend))
 
+        //NoteService.clearNotes()
+
     }
+
 
     @Test
     fun restoreDeletedComment() {
@@ -171,7 +180,7 @@ class NoteServiceTest {
 
         assertEquals(false, comment1.isDeleted)
 
-        NoteService.clearNotes()
+        //NoteService.clearNotes()
 
     }
 
