@@ -1,6 +1,6 @@
 object WallService {
 
-    var posts = emptyArray<Post>()
+    private var posts = emptyArray<Post>()
 
     fun add(post: Post): Post {
         posts += post
@@ -24,14 +24,17 @@ object WallService {
         for (post in posts) {
             if (post.id == postId) {
                 post.comments += comment
-            } else throw PostNotFoundException()
+                return comment
+            }
 
         }
-        return comment
+        throw PostNotFoundException()
     }
 
     fun clearPosts() {
-        posts.dropLast(posts.size)
+        if (posts.isNotEmpty()){
+            posts = emptyArray<Post>()
+        }
 
     }
 
