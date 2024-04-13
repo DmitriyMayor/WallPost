@@ -84,6 +84,7 @@ class WallServiceTest {
         val expected = true
         add(post1)
 
+
         assertEquals(expected, WallService.update(post2))
 
 
