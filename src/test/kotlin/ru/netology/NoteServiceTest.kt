@@ -27,8 +27,6 @@ class NoteServiceTest {
         NoteService.addNote(note1)
 
         assertEquals(note2, NoteService.addNote(note2))
-
-        //NoteService.clearNotes()
     }
 
     @Test
@@ -39,8 +37,6 @@ class NoteServiceTest {
         val comment = Comment(1, "комментарий")
 
         assertEquals(comment, NoteService.addCommentToNote(1, comment))
-
-        //NoteService.clearNotes()
 
     }
 
@@ -55,8 +51,6 @@ class NoteServiceTest {
         NoteService.deleteNote(note2)
 
         assertEquals(note1, NoteService.getNotes().last())
-
-        //NoteService.clearNotes()
     }
 
     @Test
@@ -66,14 +60,10 @@ class NoteServiceTest {
         NoteService.addNote(note1)
 
         val comment1 = Comment(1, "комментарий")
-        val comment2 = Comment(2, "комментарий")
         NoteService.addCommentToNote(1, comment1)
-        NoteService.addCommentToNote(1, comment2)
-        NoteService.deleteCommentToNote(1, comment2)
+        NoteService.deleteCommentToNote(1, comment1)
 
-        assertEquals(comment1, note1.comments.last())
-
-        //NoteService.clearNotes()
+        assertEquals(true, note1.comments.last().isDeleted)
     }
 
     @Test
@@ -127,8 +117,6 @@ class NoteServiceTest {
         val actual = NoteService.getNoteById(12)
 
         assertEquals(expected, actual)
-
-        //NoteService.clearNotes()
     }
 
     @Test
@@ -136,7 +124,7 @@ class NoteServiceTest {
 
         val note1 = Note(1, "заголовок", "текст")
         val comment1 = Comment(1, "коммент")
-        val comment2 = Comment(2, "комментар")
+        val comment2 = Comment(2, "комментар", isDeleted = true)
         val comment3 = Comment(3, "комментарррр")
 
         NoteService.addNote(note1)
@@ -144,11 +132,10 @@ class NoteServiceTest {
         NoteService.addCommentToNote(1, comment2)
         NoteService.addCommentToNote(1, comment3)
 
-        val testComments = mutableListOf<Comment>(comment1, comment2, comment3)
+        val testComments = mutableListOf<Comment>(comment1, comment3)
 
         assertEquals(testComments, NoteService.getCommentsToNote(1))
 
-        //NoteService.clearNotes()
     }
 
     @Test
@@ -162,8 +149,6 @@ class NoteServiceTest {
         val testNotes = mutableListOf(note1, note2, note3)
 
         assertEquals(testNotes, NoteService.getFriendsNotesList(friend))
-
-        //NoteService.clearNotes()
 
     }
 
@@ -179,8 +164,6 @@ class NoteServiceTest {
         NoteService.restoreDeletedComment(note1, commentId = 1)
 
         assertEquals(false, comment1.isDeleted)
-
-        //NoteService.clearNotes()
 
     }
 

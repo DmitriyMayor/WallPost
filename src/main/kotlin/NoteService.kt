@@ -36,7 +36,7 @@ object NoteService {
             if (note.id == noteId) {
                 for (c in note.comments) {
                     if (c == comment) {
-                        note.comments.remove(c)
+                        c.isDeleted = true
                         break
                     }
                 }
@@ -60,10 +60,10 @@ object NoteService {
         for (note in notes) {
             if (note.id == noteId) {
                 for (c in note.comments) {
-                    if (c.id == comment.id) {
+                    if ((c.id == comment.id) && !c.isDeleted) {
                         c.text = comment.text
                         return c
-                    } //else note.comments.plus(comment)
+                    }
                 }
             }
         }
@@ -83,10 +83,10 @@ object NoteService {
         throw NoteNotFoundException()
     }
 
-    fun getCommentsToNote(noteId: Int): MutableList<Comment> {
+    fun getCommentsToNote(noteId: Int): List<Comment> {
         for (note in notes) {
             if (note.id == noteId)
-                return note.comments
+                return note.comments.filter { comment -> !comment.isDeleted }
         }
         throw NoteNotFoundException()
     }
